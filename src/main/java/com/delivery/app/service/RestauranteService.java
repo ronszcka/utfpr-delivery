@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.delivery.app.entity.Restaurante;
+import com.delivery.app.exception.NotFoundException;
 import com.delivery.app.repository.RestauranteRepository;
 
 @Service
@@ -26,7 +27,8 @@ public class RestauranteService {
 		Optional<Restaurante> restaurante = restauranteRepository.findById(id);
 		
 		if (restaurante.isEmpty()) {
-			return null;	
+			//return null;
+			throw new NotFoundException("Restaurante não encontrado");
 		}
 		
 		return restaurante.get();

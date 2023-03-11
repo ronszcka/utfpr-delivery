@@ -11,29 +11,27 @@ import com.delivery.app.entity.Restaurante;
 
 @Component
 public class RestauranteResumidoMapper {
-	
+
 	@Autowired
 	private ModelMapper mapper;
-	
+
 	public RestauranteResumidoDTO map(Restaurante restaurante) {
-		
+
 		RestauranteResumidoDTO dto = mapper.map(restaurante, RestauranteResumidoDTO.class);
-		
+
 //		RestauranteResumidoDTO dto = new RestauranteResumidoDTO();
 //		
 //		dto.setId(restaurante.getId());
 //		dto.setNome(restaurante.getNome());
-		
+
 		return dto;
-		
+
 	}
-	
+
 	public List<RestauranteResumidoDTO> map(List<Restaurante> restaurantes) {
-		
-		return restaurantes.stream().map(
-			restaurante -> map(restaurante)
-		).toList();
-		
+
+		return restaurantes.stream().map(restaurante -> map(restaurante)).toList();
+
 	}
-	
+
 }

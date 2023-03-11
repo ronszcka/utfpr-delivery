@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,15 +42,9 @@ public class RestauranteController {
 	
 	@GetMapping("/{id}")
 	@ResponseBody
-	public ResponseEntity<Restaurante> buscarRestauranteEspecifico(@PathVariable Long id) {
+	public Restaurante buscarRestauranteEspecifico(@PathVariable Long id) {
 		
-		Restaurante restaurante = restauranteService.buscarRestauranteEspecifico(id);
-		
-		if (restaurante == null) {
-			return ResponseEntity.notFound().build();
-		}
-		
-		return ResponseEntity.status(HttpStatus.OK).body(restaurante);
+		return restauranteService.buscarRestauranteEspecifico(id);
 		
 	}
 	
